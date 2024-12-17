@@ -25,7 +25,8 @@ backup-path: "backups" # relative path to the backup directory
 worlds:
 - world
 - world_nether
-- world_the_end```
+- world_the_end
+```
 
 **Steps to install and set up:**
 
