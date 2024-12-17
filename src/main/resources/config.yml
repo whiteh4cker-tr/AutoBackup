@@ -1,0 +1,7 @@
+backup-frequency: 10800 # in seconds (e.g., 3600 seconds = 1 hour)
+max-backups: 15 # maximum number of world backups to keep
+backup-path: "backups" # relative path to the backup directory
+worlds:
+  - world
+  - world_nether
+  - world_the_end
