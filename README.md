@@ -12,6 +12,9 @@
 -   Automatically delete old world backups
 -   Compress the data using the Deflate algorithm
 
+**Example file structure:**
+![alt text](https://i.imgur.com/k0dntKN.png)
+
 **Requirements:**
 
 -   Java 17 or higher
