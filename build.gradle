@@ -1,9 +1,15 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+shadowJar {
+    relocate 'org.apache.commons.net', 'your.plugin.shaded.org.apache.commons.net'
+    archiveClassifier.set("") // Remove the "-all" suffix
 }
 
 group = 'tr.alperendemir'
-version = '1.0-SNAPSHOT'
+version = '1.1'
 
 repositories {
     mavenCentral()
@@ -19,6 +25,12 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
+    implementation("commons-net:commons-net:3.9.0")
+    implementation('com.dropbox.core:dropbox-core-sdk:7.0.0') {
+        exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'com.fasterxml.jackson', module: 'jackson-bom'
+    }
 }
 
 def targetJavaVersion = 17

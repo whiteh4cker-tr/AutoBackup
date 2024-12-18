@@ -1,6 +1,5 @@
 package tr.alperendemir.autoBackup;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -18,6 +17,14 @@ public final class AutoBackup extends JavaPlugin {
     private int maxBackups; // Maximum backups to retain
     private String backupPath; // Backup folder path
     private List<String> worlds; // List of worlds to backup
+
+    // FTP Configuration
+    private boolean ftpEnabled;
+    private FTPUploader ftpUploader;
+
+    // Dropbox Configuration
+    private boolean dropboxEnabled;
+    private DropboxUploader dropboxUploader;
 
     @Override
     public void onEnable() {
@@ -48,6 +55,30 @@ public final class AutoBackup extends JavaPlugin {
         maxBackups = getConfig().getInt("max-backups", 5);
         backupPath = getConfig().getString("backup-path", "backups");
         worlds = getConfig().getStringList("worlds");
+
+        // FTP Configuration
+        ftpEnabled = getConfig().getBoolean("ftp.enabled", false);
+        if (ftpEnabled) {
+            ftpUploader = new FTPUploader(
+                    getConfig().getString("ftp.host", ""),
+                    getConfig().getInt("ftp.port", 990),
+                    getConfig().getString("ftp.username", ""),
+                    getConfig().getString("ftp.password", ""),
+                    getConfig().getString("ftp.remote-path", "/backups"),
+                    getConfig().getBoolean("ftp.use-implicit-tls", true),
+                    getLogger()
+            );
+        }
+
+        // Dropbox Configuration
+        dropboxEnabled = getConfig().getBoolean("dropbox.enabled", false);
+        if (dropboxEnabled) {
+            dropboxUploader = new DropboxUploader(
+                    getConfig().getString("dropbox.access-token", ""),
+                    getConfig().getString("dropbox.remote-path", "/backups"),
+                    getLogger()
+            );
+        }
     }
 
     private void startBackupTask() {
@@ -62,12 +93,16 @@ public final class AutoBackup extends JavaPlugin {
     private void performBackup() {
         getLogger().info("Starting backup process...");
 
+        List<String> backupFiles = new ArrayList<>();
+
         for (String worldName : worlds) {
             File worldDir = new File(worldName);
             if (worldDir.exists() && worldDir.isDirectory()) {
-                String backupFileName = backupPath + "/" + worldName + "_" + new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date()) + ".zip";
+                String backupFileName = backupPath + "/" + worldName + "_" +
+                        new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date()) + ".zip";
                 try {
                     zipDirectory(worldDir.toPath(), Paths.get(backupFileName));
+                    backupFiles.add(backupFileName);
                     getLogger().info("Backed up world: " + worldName + " to " + backupFileName);
                 } catch (IOException e) {
                     getLogger().severe("Failed to backup world: " + worldName + " - " + e.getMessage());
@@ -75,6 +110,16 @@ public final class AutoBackup extends JavaPlugin {
             } else {
                 getLogger().warning("World directory not found: " + worldName);
             }
+        }
+
+        // Upload to FTP if enabled
+        if (ftpEnabled && ftpUploader != null) {
+            ftpUploader.uploadBackups(backupFiles);
+        }
+
+        // Upload to Dropbox if enabled
+        if (dropboxEnabled && dropboxUploader != null) {
+            dropboxUploader.uploadBackups(backupFiles);
         }
 
         cleanupOldBackups();
