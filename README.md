@@ -4,12 +4,15 @@
 **Feature list:**
 
 -   Automatic backup
+-   Dropbox support
+
+-   FTPS (Implicit TLS) support
 -   Configurable backup frequency
 
 -   Backup into specified directory
 -   Selective backups of certain worlds
 
--   Automatically delete old world backups
+-   Automatically delete old local world backups
 -   Compress the data using the Deflate algorithm
 
 **Example file structure:**
