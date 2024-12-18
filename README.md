@@ -25,13 +25,30 @@
 
 **Default config.yml:**
 ```
+# Backup Configuration
 backup-frequency: 10800 # in seconds (e.g., 3600 seconds = 1 hour)
 max-backups: 15 # maximum number of world backups to keep
 backup-path: "backups" # relative path to the backup directory
 worlds:
-- world
-- world_nether
-- world_the_end
+  - world
+  - world_nether
+  - world_the_end
+
+# FTP Backup Configuration
+ftp:
+  enabled: false # Set to true to enable FTP backups
+  host: "ftp.example.com"
+  port: 990 # Implicit TLS Port
+  username: "your_username"
+  password: "your_password"
+  remote-path: "/backups"
+  use-implicit-tls: true
+
+# Dropbox Backup Configuration
+dropbox:
+  enabled: false # Set to true to enable Dropbox backups
+  access-token: "your-dropbox-access-token"
+  remote-path: "/backups"
 ```
 
 **Steps to install and set up:**
