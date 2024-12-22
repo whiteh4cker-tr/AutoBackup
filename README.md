@@ -20,7 +20,7 @@
 
 **Requirements:**
 
--   Java 17 or higher
+-   Java 21 or higher
 -   Spigot/Paper/forks MC v1.21.4
 
 **Default config.yml:**
