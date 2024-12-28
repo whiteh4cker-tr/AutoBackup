@@ -1,6 +1,11 @@
 # AutoBackup
  AutoBackup Spigot plugin - Schedule and perform automatic Minecraft server world backups
 
+![Modrinth Downloads](https://img.shields.io/modrinth/dt/autobackup?style=flat&label=Modrinth%20Downloads&link=https%3A%2F%2Fmodrinth.com%2Fplugin%2Fautobackup)
+![Spiget Downloads](https://img.shields.io/spiget/downloads/121361?style=flat&label=Spigot%20Downloads&link=https%3A%2F%2Fwww.spigotmc.org%2Fresources%2Fautobackup.121361%2F)
+![GitHub License](https://img.shields.io/github/license/whiteh4cker-tr/AutoBackup)
+[![CodeFactor](https://www.codefactor.io/repository/github/whiteh4cker-tr/autobackup/badge)](https://www.codefactor.io/repository/github/whiteh4cker-tr/autobackup)
+
 **Feature list:**
 
 -   Automatic backup
