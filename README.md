@@ -5,7 +5,7 @@
 [![Spiget Downloads](https://img.shields.io/spiget/downloads/121361?style=flat&label=Spigot%20Downloads)](https://www.spigotmc.org/resources/autobackup.121361/)
 [![Hangar Views](https://img.shields.io/hangar/views/AutoBackup?style=flat&label=Hangar%20Views)](https://hangar.papermc.io/icecubetr/AutoBackup)
 ![GitHub License](https://img.shields.io/github/license/whiteh4cker-tr/AutoBackup)
-[![CodeFactor](https://www.codefactor.io/repository/github/whiteh4cker-tr/autobackup/badge)](https://www.codefactor.io/repository/github/whiteh4cker-tr/autobackup)
+[![CodeFactor](https://www.codefactor.io/Content/badges/APlus.svg)](https://www.codefactor.io/repository/github/whiteh4cker-tr/autobackup)
 
 <big>Supported Platforms</big><br>
 [![spigot software](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.2.0/assets/compact-minimal/supported/spigot_vector.svg)](https://www.spigotmc.org/)
