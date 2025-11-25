@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'com.gradleup.shadow' version '9.2.2'
 }
 
 shadowJar {
@@ -9,7 +9,7 @@ shadowJar {
 }
 
 group = 'tr.alperendemir'
-version = '1.1'
+version = '1.2'
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21.10-R0.1-SNAPSHOT")
     implementation("commons-net:commons-net:3.9.0")
     implementation('com.dropbox.core:dropbox-core-sdk:7.0.0') {
         exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
