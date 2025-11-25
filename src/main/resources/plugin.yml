@@ -1,4 +1,4 @@
 name: AutoBackup
-version: '1.1'
+version: '1.2'
 main: tr.alperendemir.autoBackup.AutoBackup
 api-version: '1.21'
