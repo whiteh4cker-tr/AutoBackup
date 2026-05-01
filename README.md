@@ -29,11 +29,6 @@
 **Example file structure:**
 ![alt text](https://i.imgur.com/k0dntKN.png)
 
-**Requirements:**
-
--   Java 21 or higher
--   Spigot/Paper/forks MC v1.21.4
-
 **Default config.yml:**
 ```
 # Backup Configuration
@@ -61,6 +56,15 @@ dropbox:
   access-token: "your-dropbox-access-token"
   remote-path: "/backups"
 ```
+
+**Building:**
+
+To build the plugin jar file, run:
+```powershell
+.\gradlew.bat shadowJar
+```
+
+The compiled jar will be available in the `build/libs/` directory.
 
 **Steps to install and set up:**
 
